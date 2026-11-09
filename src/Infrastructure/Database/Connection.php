@@ -2,7 +2,9 @@
 
 namespace App\Infrastructure\Database;
 
-use Dotenv;
+require_once dirname(__DIR__, 3) . '/vendor/autoload.php';
+
+use Dotenv\Dotenv;
 use PDO;
 
 class Connection
@@ -19,7 +21,7 @@ class Connection
         $password = $_ENV['DB_PASSWORD'];
 
         return new PDO(
-            "mysql:host={$host};port={$port};dbname={$dbname}",
+            "pgsql:host={$host};port={$port};dbname={$dbname}",
             $user,
             $password,
             [
