@@ -11,8 +11,6 @@ class ShortLink
     private string $link;
 
     public function __construct(
-        int $id,
-        string $code,
         string $link
     ){
         $this->id = null;
@@ -39,6 +37,10 @@ class ShortLink
     {
         if($this->id !== null) {
             throw new Exception("Id ja definido.");
+        }
+
+        if($id < 0) {
+            throw new Exception("Id inválido.");
         }
 
         $this->id = $id;
